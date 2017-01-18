@@ -2,28 +2,28 @@ package utn.frsf.com.yoreclamo.Model;
 
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Reclamo {
 
     private int mId;
     private String mDescripcion;
     private String mFecha;
-    private Double mLatitud;
-    private Double mLongitud;
+    private LatLng mUbicacion;
     private String mNombre;
     private String mEmail;
     private String mTelefono;
     private String mEstado;
     private String mImagePath;
 
-
-    public Reclamo (int id, String descripcion, String fecha, Double latitud, Double longitud, String nombre,
+    public Reclamo (){};
+    public Reclamo (int id, String descripcion, String fecha,LatLng Ubicacion, String nombre,
                                         String email, String telefono, String estado, String imagePath){
 
         this.setId(id);
         this.setDescripcion(descripcion);
         this.setFecha(fecha);
-        this.setLatitud(latitud);
-        this.setLongitud(longitud);
+        this.setUbicacion(Ubicacion);
         this.setNombre(nombre);
         this.setEmail(email);
         this.setTelefono(telefono);
@@ -95,31 +95,19 @@ public class Reclamo {
         mFecha = fecha;
     }
 
-    public Double getLatitud() {
-        return mLatitud;
-    }
+    public LatLng getUbicacion() {return mUbicacion;}
 
-    public void setLatitud(Double latitud) {
-        mLatitud = latitud;
-    }
-
-    public Double getLongitud() {
-        return mLongitud;
-    }
-
-    public void setLongitud(Double longitud) {
-        mLongitud = longitud;
-    }
+    public void setUbicacion(LatLng ubicacion) {mUbicacion = ubicacion;}
 
 
 
     public static final Reclamo[]  LISTA_EJEMPLO= new Reclamo[]{
 
-            new Reclamo(1,  "Pozo", "2016/12/25",  25.05, 26.05,  "Ema",
+            new Reclamo(1,  "Pozo", "2016/12/25",  new LatLng(22.8,22.0),  "Ema",
                     "ema@hotmail.com",  "422222","No resuelto",  "sdasd"),
-            new Reclamo(2, "Semaforo", "2016/12/25",  25.05, 26.05,  "Ema",
+            new Reclamo(2, "Semaforo", "2016/12/25",  new LatLng(22.8,22.0),  "Ema",
                                 "ema@hotmail.com",  "422222","No resuelto",  "sdasd"),
-            new Reclamo(3, "Pozo", "2016/12/25",  25.05, 26.05,  "Ema",
+            new Reclamo(3, "Pozo", "2016/12/25",  new LatLng(22.8,22.0),  "Ema",
                                 "ema@hotmail.com",  "422222","No resuelto",  "sdasd")
 
     };
