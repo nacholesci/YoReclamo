@@ -1,8 +1,14 @@
 package utn.frsf.com.yoreclamo.Model;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.LatLng;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import utn.frsf.com.yoreclamo.ApiRest.ReclamoDBApiRestMetaData;
 
 public class Reclamo {
 
@@ -14,11 +20,28 @@ public class Reclamo {
     private String mEmail;
     private String mTelefono;
     private String mEstado;
-    private String mImagePath;
+    private String mImagenReclamo;
 
     public Reclamo (){};
+    public Reclamo (JSONObject jsonObject){
+        try {
+            mId = jsonObject.getInt(ReclamoDBApiRestMetaData.TablaReclamoMetaData._ID);
+            mDescripcion = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.DESCRIPCION);
+            mUbicacion = new LatLng(
+                    jsonObject.getDouble(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LATITUD),
+                    jsonObject.getDouble(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LONGITUD)
+            );
+            mNombre = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.NOMBRE);
+            mEmail = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.EMAIL);
+            mTelefono = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.TELEFONO);
+            mEstado = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.ESTADO);
+            mImagenReclamo = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.IMAGENRECLAMO);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
     public Reclamo (int id, String descripcion, String fecha,LatLng Ubicacion, String nombre,
-                                        String email, String telefono, String estado, String imagePath){
+                                        String email, String telefono, String estado, String image){
 
         this.setId(id);
         this.setDescripcion(descripcion);
@@ -28,7 +51,7 @@ public class Reclamo {
         this.setEmail(email);
         this.setTelefono(telefono);
         this.setEstado(estado);
-        this.setImagePath(imagePath);
+        this.setImagenReclamo(image);
     }
 
     public int getId() {
@@ -39,12 +62,12 @@ public class Reclamo {
         mId = id;
     }
 
-    public String getImagePath() {
-        return mImagePath;
+    public String getImagenReclamo() {
+        return mImagenReclamo;
     }
 
-    public void setImagePath(String imagePath) {
-        mImagePath = imagePath;
+    public void setImagenReclamo(String image) {
+        mImagenReclamo = image;
     }
 
     public String getNombre() {
@@ -111,4 +134,24 @@ public class Reclamo {
                                 "ema@hotmail.com",  "422222","No resuelto",  "sdasd")
 
     };
+
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.DESCRIPCION,mDescripcion);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.FECHA,mFecha);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LATITUD,mUbicacion.latitude);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LONGITUD,mUbicacion.longitude);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.NOMBRE,mNombre);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.EMAIL,mEmail);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.TELEFONO,mTelefono);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.ESTADO,mEstado);
+            jsonObject.put(ReclamoDBApiRestMetaData.TablaReclamoMetaData.IMAGENRECLAMO,mImagenReclamo);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("JSON-RECLAMO: ",jsonObject.toString());
+        return jsonObject;
+    }
 }

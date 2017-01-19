@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -68,6 +69,7 @@ public class MapActivity extends AppCompatActivity implements com.google.android
                             public void onClick(DialogInterface dialog, int which) {
                                 Bundle Locacion = new Bundle();
                                 Locacion.putParcelable("LatLng",latLng);
+
                                 Intent i = new Intent(MapActivity.this,AltaReclamo.class);
                                 i.putExtra("bundle",Locacion);
                                 startActivityForResult(i,1990);
@@ -89,7 +91,7 @@ public class MapActivity extends AppCompatActivity implements com.google.android
             nuevo.remove();
             nuevo = myMap.addMarker(nuevoOpciones);
         }
-        if (requestCode == 1990 && resultCode == RESULT_CANCELED) {
+        else if (requestCode == 1990 && resultCode == RESULT_CANCELED) {
             nuevo.remove();
         }
     }

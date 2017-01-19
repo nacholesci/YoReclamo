@@ -6,8 +6,13 @@
     android:id="@+id/activity_alta_reclamo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="utn.frsf.com.yoreclamo.Interfaz.AltaReclamo">
-
+    tools:context="utn.frsf.com.yoreclamo.Interfaz.AltaReclamo"
+    android:scrollIndicators="right"
+    android:scrollbarAlwaysDrawHorizontalTrack="false"
+    android:scrollbarAlwaysDrawVerticalTrack="false">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -46,10 +51,27 @@
             android:inputType="text"/>
 
         <TextView
-            android:text="Numero de contacto"
+            android:text="Nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView6"
+            android:textSize="18sp"
+            android:paddingTop="15dp"
+            android:textColor="@color/cast_intro_overlay_background_color"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText_nombre"
+            android:hint="Ingrese su nombre"/>
+
+        <TextView
+            android:text="Numero de contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
             android:textSize="18sp"
             android:paddingTop="15dp"
             android:textColor="@color/cast_intro_overlay_background_color"/>
@@ -84,14 +106,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            android:textAlignment="center"/>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="186dp"
+            android:layout_height="200dp"
             app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal"
             android:id="@+id/imageView_ImagenReclamo"
-            android:layout_weight="0.79"/>
+            android:layout_weight="10.78"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -117,4 +140,5 @@
         </LinearLayout>
 
     </LinearLayout>
+</ScrollView>
 </RelativeLayout>
