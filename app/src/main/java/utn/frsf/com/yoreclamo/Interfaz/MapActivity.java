@@ -1,6 +1,8 @@
 package utn.frsf.com.yoreclamo.Interfaz;
 
 import utn.frsf.com.yoreclamo.*;
+import utn.frsf.com.yoreclamo.ApiRest.ReclamoApiRest;
+import utn.frsf.com.yoreclamo.Model.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 import android.*;
@@ -81,6 +83,7 @@ public class MapActivity extends AppCompatActivity implements com.google.android
 
         });
         localizarMiPosicion();
+        cargarMarcadores();
     }
 
     @Override
@@ -107,5 +110,12 @@ public class MapActivity extends AppCompatActivity implements com.google.android
         }
 
         myMap.setMyLocationEnabled(true);
+    }
+    private void cargarMarcadores(){
+        Reclamo[] Reclamos = new ReclamoApiRest().listarEnArreglo();
+        for (int i=0;i<Reclamos.length;i++) {
+            myMap.addMarker(new MarkerOptions().position(Reclamos[i].getUbicacion())
+            .title(Reclamos[i].getDescripcion()));
+        }
     }
 }

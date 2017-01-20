@@ -92,6 +92,8 @@ public class AltaReclamo extends AppCompatActivity {
                 nuevoReclamo.setDescripcion(editText_Titulo.getText().toString());
                 nuevoReclamo.setUbicacion(ubicacion);
                 nuevoReclamo.setEstado("Sin Resolver");
+                nuevoReclamo.setEmail(editText_Email.getText().toString());
+                nuevoReclamo.setTelefono(editText_Telefono.getText().toString());
                 //fecha de nuevo reclamo
                 Calendar c = new GregorianCalendar();
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -139,9 +141,10 @@ public class AltaReclamo extends AppCompatActivity {
             //String a = getRealPathFromURI(miImageUri);
             //Log.i("PATH - ",a);
             //photobmp = BitmapFactory.decodeFile(a);
-            imageView_ImagenReclamo.setImageBitmap(photobmp);
+
             imageView_ImagenReclamo.setImageURI(miImageUri);
             imageView_ImagenReclamo.setTag(miImageUri.getPath());
+            imageView_ImagenReclamo.buildDrawingCache();
             photobmp = imageView_ImagenReclamo.getDrawingCache();
 
         }

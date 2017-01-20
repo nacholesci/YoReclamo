@@ -2,11 +2,16 @@ package utn.frsf.com.yoreclamo.Adaptador;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import utn.frsf.com.yoreclamo.Model.Reclamo;
@@ -62,7 +67,7 @@ public class Adaptador extends BaseAdapter {
             holder = new ViewHolder();
             holder.descripcion = (TextView) convertView.findViewById(R.id.descripcion);
             holder.fecha = (TextView) convertView.findViewById(R.id.fecha);
-           // holder.imagen = (TextView) convertView.findViewById(R.id.imageButton);
+            holder.imagen = (ImageButton) convertView.findViewById(R.id.imageButton);
 
             convertView.setTag(holder);
         }
@@ -72,6 +77,10 @@ public class Adaptador extends BaseAdapter {
 
         holder.descripcion.setText(mReclamos[position].getDescripcion());
         holder.fecha.setText(mReclamos[position].getFecha());
+        byte[] decodedString = Base64.decode(mReclamos[position].getImagenReclamo(), Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        holder.imagen.setImageBitmap(decodedByte);
+
         // Setear la imagen
         // holder.descripcion.setText(mReclamos[position].getImagePath());
 
@@ -81,7 +90,7 @@ public class Adaptador extends BaseAdapter {
     public class ViewHolder {
         TextView descripcion;
         TextView fecha;
-        //ImageButton imagen;
+        ImageButton imagen;
 
     }
 }

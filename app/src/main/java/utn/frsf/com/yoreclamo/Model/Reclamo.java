@@ -25,8 +25,9 @@ public class Reclamo {
     public Reclamo (){};
     public Reclamo (JSONObject jsonObject){
         try {
-            mId = jsonObject.getInt(ReclamoDBApiRestMetaData.TablaReclamoMetaData._ID);
+            mId = jsonObject.getInt(ReclamoDBApiRestMetaData.TablaReclamoMetaData.ID);
             mDescripcion = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.DESCRIPCION);
+            mFecha = jsonObject.getString(ReclamoDBApiRestMetaData.TablaReclamoMetaData.FECHA);
             mUbicacion = new LatLng(
                     jsonObject.getDouble(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LATITUD),
                     jsonObject.getDouble(ReclamoDBApiRestMetaData.TablaReclamoMetaData.LONGITUD)

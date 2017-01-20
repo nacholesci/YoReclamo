@@ -20,7 +20,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class AsynTaskBD extends AsyncTask<Object, Void, Object> {
-    private final String IP_SERVER = "192.168.0.22";
+    private final String IP_SERVER = "192.168.1.12";
     private final String PORT_SERVER = "4000";
     private final String TAG_LOG = "YoReclamo";
     private HttpURLConnection urlConnection;
