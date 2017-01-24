@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detalle_reclamo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utn.frsf.com.yoreclamo.Interfaz.DetalleReclamo">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Detalle del Reclamo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:paddingTop="20dp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:paddingBottom="5dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="Descripción:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Descripcion"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="Estado:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Estado"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="Fecha:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Fecha"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="363dp"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal"
+            android:id="@+id/imageView_detalle_ImagenReclamo"
+            />
+
+        <TextView
+            android:text="Información de contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView12"
+            android:textSize="20sp"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:paddingTop="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:paddingBottom="5dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="Nombre:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Nombre"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="Número:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Numero"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:text="E-mail:"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_detalle_Email"
+                android:textSize="18sp"
+                android:textColor="@color/cast_expanded_controller_background_color"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>

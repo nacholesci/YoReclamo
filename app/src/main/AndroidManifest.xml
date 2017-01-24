@@ -19,7 +19,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
 
-        <activity android:name=".Interfaz.MainActivity">
+        <activity android:name=".Interfaz.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -31,6 +32,8 @@
         <activity android:name=".Interfaz.MapActivity">
         </activity>
         <activity android:name=".Interfaz.AltaReclamo">
+        </activity>
+        <activity android:name=".Interfaz.DetalleReclamo">
         </activity>
     </application>
 

@@ -22,7 +22,7 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"/>
     <Button
-        android:text="Mis Reclamos"
+        android:text="Reclamos"
         android:layout_height="wrap_content"
         android:id="@+id/misreclamosbutton"
         android:layout_width="match_parent"

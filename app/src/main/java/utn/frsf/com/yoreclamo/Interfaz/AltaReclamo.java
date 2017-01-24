@@ -100,7 +100,7 @@ public class AltaReclamo extends AppCompatActivity {
                 String fecha = df.format(c.getTime());
                 nuevoReclamo.setFecha(fecha);
 
-                //cargamos imagen a string ----- FALTA VERRRRR
+                //cargamos imagen a string
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 photobmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 byte[] imageBytes = baos.toByteArray();
@@ -144,6 +144,7 @@ public class AltaReclamo extends AppCompatActivity {
 
             imageView_ImagenReclamo.setImageURI(miImageUri);
             imageView_ImagenReclamo.setTag(miImageUri.getPath());
+
             imageView_ImagenReclamo.buildDrawingCache();
             photobmp = imageView_ImagenReclamo.getDrawingCache();
 

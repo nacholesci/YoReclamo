@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.Serializable;
+
 
 public class MapActivity extends AppCompatActivity implements com.google.android.gms.maps.OnMapReadyCallback {
 
@@ -84,6 +86,32 @@ public class MapActivity extends AppCompatActivity implements com.google.android
         });
         localizarMiPosicion();
         cargarMarcadores();
+        myMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Reclamo[] Reclamos = new ReclamoApiRest().listarEnArreglo();
+                Reclamo encontrado = null;
+                for (int i=0;i<Reclamos.length;i++) {
+                    if(Reclamos[i].getUbicacion().equals(marker.getPosition())) {
+                        encontrado = Reclamos[i];
+                        i=Reclamos.length;
+                    }
+                }
+                //Bundle bundleReclamo = new Bundle();
+
+                //bundleReclamo.putParcelable("bundleReclamo",encontrado);
+
+                Intent i = new Intent(MapActivity.this,DetalleReclamo.class);
+                i.putExtra("reclamo_descripcion", encontrado.getDescripcion());
+                i.putExtra("reclamo_estado",encontrado.getEstado());
+                i.putExtra("reclamo_fecha",encontrado.getFecha());
+                i.putExtra("reclamo_nombre",encontrado.getNombre());
+                i.putExtra("reclamo_numero",encontrado.getTelefono());
+                i.putExtra("reclamo_email",encontrado.getEmail());
+                i.putExtra("reclamo_imagen",encontrado.getImagenReclamo());
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -114,8 +142,10 @@ public class MapActivity extends AppCompatActivity implements com.google.android
     private void cargarMarcadores(){
         Reclamo[] Reclamos = new ReclamoApiRest().listarEnArreglo();
         for (int i=0;i<Reclamos.length;i++) {
-            myMap.addMarker(new MarkerOptions().position(Reclamos[i].getUbicacion())
-            .title(Reclamos[i].getDescripcion()));
+            MarkerOptions a = new MarkerOptions().position(Reclamos[i].getUbicacion())
+                    .title(Reclamos[i].getDescripcion());
+
+            myMap.addMarker(a);
         }
     }
 }
