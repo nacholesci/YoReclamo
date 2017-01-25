@@ -27,13 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Interfaz.MisReclamosActivity">
+        <activity android:name=".Interfaz.MisReclamosActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Interfaz.MapActivity">
+        <activity android:name=".Interfaz.MapActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Interfaz.AltaReclamo">
+        <activity android:name=".Interfaz.AltaReclamo" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Interfaz.DetalleReclamo">
+        <activity android:name=".Interfaz.DetalleReclamo" android:screenOrientation="portrait">
         </activity>
     </application>
 

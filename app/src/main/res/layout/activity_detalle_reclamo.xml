@@ -6,7 +6,9 @@
     android:id="@+id/activity_detalle_reclamo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="utn.frsf.com.yoreclamo.Interfaz.DetalleReclamo">
+    tools:context="utn.frsf.com.yoreclamo.Interfaz.DetalleReclamo"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="25dp">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,10 +26,10 @@
             android:textSize="24sp"
             android:textStyle="normal|bold"
             android:textAlignment="center"
-            android:paddingTop="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:background="@color/colorPrimaryDark"
-            android:textColor="@color/cast_expanded_controller_background_color"
-            android:paddingBottom="5dp"/>
+            android:textColor="@color/cast_expanded_controller_background_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -40,6 +42,7 @@
                 android:text="Descripción:"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:id="@+id/textView10"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
@@ -65,7 +68,8 @@
                 android:text="Estado:"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/textView11"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
                 />
@@ -90,7 +94,8 @@
                 android:text="Fecha:"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/textView12"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
                 />
@@ -115,7 +120,7 @@
             android:text="Información de contacto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView12"
+            android:id="@+id/textView13"
             android:textSize="20sp"
             android:textStyle="normal|bold"
             android:textAlignment="center"
@@ -134,8 +139,9 @@
             <TextView
                 android:text="Nombre:"
                 android:layout_width="117dp"
+                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:id="@+id/textView14"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
                 />
@@ -160,8 +166,9 @@
             <TextView
                 android:text="Número:"
                 android:layout_width="117dp"
+                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:id="@+id/textView15"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
                 />
@@ -185,8 +192,9 @@
             <TextView
                 android:text="E-mail:"
                 android:layout_width="117dp"
+                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView10"
+                android:id="@+id/textView16"
                 android:textSize="18sp"
                 android:textColor="@color/cast_expanded_controller_background_color"
                 />

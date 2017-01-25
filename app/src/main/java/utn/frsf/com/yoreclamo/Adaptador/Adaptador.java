@@ -16,59 +16,55 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 import utn.frsf.com.yoreclamo.Model.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 public class Adaptador extends ArrayAdapter<Reclamo> {
 
-    private List<Reclamo> mReclamos;
-    private LayoutInflater inflater;
 
     public Adaptador (Context context, List<Reclamo> reclamos){
-        super(context, R.layout.fila_reclamo, reclamos);
-        inflater = LayoutInflater.from(context);
-        mReclamos=reclamos;
-    }
-
-    @Override
-    public boolean isEnabled (int position) {
-        return false;
+        super(context, 0, reclamos);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        View row = convertView;
+        LayoutInflater inflater = (LayoutInflater) getContext()
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if(row == null) {
-            row = inflater.inflate(R.layout.fila_reclamo, parent,false);
+
+
+        if(convertView == null) {
+            convertView = inflater.inflate(R.layout.fila, parent,false);
+
             holder = new ViewHolder();
-            holder.descripcion = (TextView) row.findViewById(R.id.descripcion);
-            holder.fecha = (TextView) row.findViewById(R.id.fecha);
-            holder.imagen = (ImageButton) row.findViewById(R.id.imageButton);
+            holder.descripcion = (TextView) convertView.findViewById(R.id.descripcion);
+            holder.fecha = (TextView) convertView.findViewById(R.id.fecha);
+            holder.imagen = (ImageView) convertView.findViewById(R.id.imageView);
 
-            row.setTag(holder);
+            convertView.setTag(holder);
         }
         else{
-            holder = (ViewHolder) row.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.descripcion.setText(mReclamos.get(position).getDescripcion());
-        holder.fecha.setText(mReclamos.get(position).getFecha());
-        byte[] decodedString = Base64.decode(mReclamos.get(position).getImagenReclamo(), Base64.DEFAULT);
+        Reclamo item = getItem(position);
+        byte[] decodedString = Base64.decode(item.getImagenReclamo(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+        holder.descripcion.setText(item.getDescripcion());
+        holder.fecha.setText(item.getFecha());
         holder.imagen.setImageBitmap(decodedByte);
 
-        return row;
+        return convertView;
     }
 
-
-
-    public class ViewHolder {
+    static class ViewHolder {
         TextView descripcion;
         TextView fecha;
-        ImageButton imagen;
+        ImageView imagen;
 
     }
 }
