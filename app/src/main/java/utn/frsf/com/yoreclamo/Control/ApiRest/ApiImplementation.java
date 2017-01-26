@@ -1,4 +1,4 @@
-package utn.frsf.com.yoreclamo.ApiRest;
+package utn.frsf.com.yoreclamo.Control.ApiRest;
 
 
 public interface ApiImplementation<T> {

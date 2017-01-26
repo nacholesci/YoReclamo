@@ -1,5 +1,7 @@
-package utn.frsf.com.yoreclamo.ApiRest;
+package utn.frsf.com.yoreclamo.Control.ApiRest;
 
+
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,7 +10,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-import utn.frsf.com.yoreclamo.Model.Reclamo;
+import utn.frsf.com.yoreclamo.Entidad.Reclamo;
 
 public class ReclamoApiRest implements ApiImplementation<Reclamo> {
 
@@ -25,6 +27,14 @@ public class ReclamoApiRest implements ApiImplementation<Reclamo> {
     @Override
     public void actualizar(Reclamo entrada) {
         new AsynTaskBD().execute(ReclamoDBApiRestMetaData.TABLA_RECLAMO,"PUT",entrada.toJSON(),entrada.getId());
+    }
+
+    public Reclamo buscarLatLng(LatLng latLng){
+        ArrayList<Reclamo> entrada = listarEnLista();
+        for(Reclamo i: entrada)
+            if(i.getUbicacion().equals(latLng))
+                return i;
+        return null;
     }
 
     public Reclamo[] listarEnArreglo(){

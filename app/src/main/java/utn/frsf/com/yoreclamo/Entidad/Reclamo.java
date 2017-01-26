@@ -1,14 +1,13 @@
-package utn.frsf.com.yoreclamo.Model;
+package utn.frsf.com.yoreclamo.Entidad;
 
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utn.frsf.com.yoreclamo.ApiRest.ReclamoDBApiRestMetaData;
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoDBApiRestMetaData;
 
 public class Reclamo {
 

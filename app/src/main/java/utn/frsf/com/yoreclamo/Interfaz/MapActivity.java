@@ -1,11 +1,9 @@
 package utn.frsf.com.yoreclamo.Interfaz;
 
-import utn.frsf.com.yoreclamo.*;
-import utn.frsf.com.yoreclamo.ApiRest.ReclamoApiRest;
-import utn.frsf.com.yoreclamo.Model.Reclamo;
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
+import utn.frsf.com.yoreclamo.Entidad.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
-import android.*;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +12,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -22,8 +19,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.io.Serializable;
 
 
 public class MapActivity extends AppCompatActivity implements com.google.android.gms.maps.OnMapReadyCallback {
@@ -118,9 +113,10 @@ public class MapActivity extends AppCompatActivity implements com.google.android
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1990 && resultCode == RESULT_OK) {
-            nuevoOpciones.title(data.getStringExtra("Descripcion"));
+            /*nuevoOpciones.title(data.getStringExtra("Descripcion"));
             nuevo.remove();
-            nuevo = myMap.addMarker(nuevoOpciones);
+            nuevo = myMap.addMarker(nuevoOpciones);*/
+            cargarMarcadores();
         }
         else if (requestCode == 1990 && resultCode == RESULT_CANCELED) {
             nuevo.remove();

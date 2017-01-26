@@ -8,7 +8,6 @@ import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import utn.frsf.com.yoreclamo.Model.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 public class DetalleReclamo extends AppCompatActivity {

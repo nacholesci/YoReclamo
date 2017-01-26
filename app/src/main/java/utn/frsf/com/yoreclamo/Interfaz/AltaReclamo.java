@@ -1,15 +1,14 @@
 package utn.frsf.com.yoreclamo.Interfaz;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.text.format.Time;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -24,9 +23,11 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
-import utn.frsf.com.yoreclamo.ApiRest.ReclamoApiRest;
-import utn.frsf.com.yoreclamo.Model.Reclamo;
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
+import utn.frsf.com.yoreclamo.Control.MyReceiver;
+import utn.frsf.com.yoreclamo.Entidad.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 public class AltaReclamo extends AppCompatActivity {
@@ -91,7 +92,7 @@ public class AltaReclamo extends AppCompatActivity {
                 nuevoReclamo.setNombre(editText_Nombre.getText().toString());
                 nuevoReclamo.setDescripcion(editText_Titulo.getText().toString());
                 nuevoReclamo.setUbicacion(ubicacion);
-                nuevoReclamo.setEstado("Sin Resolver");
+                nuevoReclamo.setEstado(getResources().getString(R.string.Reclamo_no_resuelto));
                 nuevoReclamo.setEmail(editText_Email.getText().toString());
                 nuevoReclamo.setTelefono(editText_Telefono.getText().toString());
                 //fecha de nuevo reclamo
@@ -112,8 +113,25 @@ public class AltaReclamo extends AppCompatActivity {
                 // esta hecho en la otra aplicacion de pablo (va aca abajo)
                 new ReclamoApiRest().crear(nuevoReclamo);
 
+
+
+
+
+                Intent intent_Notificacion = new Intent("EmisionAltaReclamo");
+                Bundle b = new Bundle();
+                b.putDouble("LatLng-Lat",nuevoReclamo.getUbicacion().latitude);
+                b.putDouble("LatLng-Lng",nuevoReclamo.getUbicacion().longitude);
+                b.putString("Estado",getResources().getString(R.string.Reclamo_en_solucion));
+                intent_Notificacion.putExtra("bundle",b);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(AltaReclamo.this,0,intent_Notificacion,0);
+                AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                Random r = new Random();
+                int tiempo = r.nextInt(10 - 5 + 1) + 5; // Entre 5 y 10 segundos demora procesar el reclamo
+                am.set(AlarmManager.RTC,System.currentTimeMillis() + tiempo * 1000,pendingIntent);
+
+                //Éxito
                 Intent i = new Intent();
-                i.putExtra("Descripcion",editText_Titulo.getText().toString());
                 setResult(RESULT_OK,i);
                 finish();
             }

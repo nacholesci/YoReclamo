@@ -2,4 +2,7 @@
     <string name="app_name">YoReclamo</string>
     <string name="title_activity_map">Map</string>
     <string name="google_maps_key">AIzaSyDOLyFt-zAXyOSkh_BbsAFrppSKdTZFBZ4</string>
+    <string name="Reclamo_no_resuelto">Sin resolver</string>
+    <string name="Reclamo_en_solucion">En solucion</string>
+    <string name="Reclamo_resuelto">Resuelto</string>
 </resources>

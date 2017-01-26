@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import utn.frsf.com.yoreclamo.ApiRest.AsynTaskBD;
-import utn.frsf.com.yoreclamo.ApiRest.ReclamoDBApiRestMetaData;
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
 import utn.frsf.com.yoreclamo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
 

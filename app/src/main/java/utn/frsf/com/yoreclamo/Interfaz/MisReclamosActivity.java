@@ -3,16 +3,15 @@ package utn.frsf.com.yoreclamo.Interfaz;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import utn.frsf.com.yoreclamo.Adaptador.Adaptador;
-import utn.frsf.com.yoreclamo.ApiRest.ReclamoApiRest;
-import utn.frsf.com.yoreclamo.Model.Reclamo;
+import utn.frsf.com.yoreclamo.Control.Adaptador;
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
+import utn.frsf.com.yoreclamo.Entidad.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 public class MisReclamosActivity extends AppCompatActivity {
