@@ -121,6 +121,7 @@ public class AltaReclamo extends AppCompatActivity {
                 Bundle b = new Bundle();
                 b.putDouble("LatLng-Lat",nuevoReclamo.getUbicacion().latitude);
                 b.putDouble("LatLng-Lng",nuevoReclamo.getUbicacion().longitude);
+                b.putString("Descripcion",nuevoReclamo.getDescripcion());
                 b.putString("Estado",getResources().getString(R.string.Reclamo_en_solucion));
                 intent_Notificacion.putExtra("bundle",b);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(AltaReclamo.this,0,intent_Notificacion,0);

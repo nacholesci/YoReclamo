@@ -30,10 +30,11 @@ public class MyReceiver extends BroadcastReceiver {
         if(b!=null){
             if(((String) b.getString("Estado")).equals(context.getResources().getString(R.string.Reclamo_en_solucion))){
                 // Vuelvo a ejecutar el servicio para cambiar de estado No Resuelto a En Solucion
-                Intent intent_Notificacion = new Intent(/*AltaReclamo.this, MyReceiver.class*/"ResolverReclamo");
+                Intent intent_Notificacion = new Intent("ResolverReclamo");
                 Bundle bb = new Bundle();
                 bb.putDouble("LatLng-Lat",b.getDouble("LatLng-Lat"));
                 bb.putDouble("LatLng-Lng",b.getDouble("LatLng-Lng"));
+                bb.putString("Descripcion",b.getString("Descripcion"));
                 bb.putString("Estado", context.getResources().getString(R.string.Reclamo_resuelto));
                 intent_Notificacion.putExtra("bundle",bb);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,intent_Notificacion,0);
@@ -50,13 +51,20 @@ public class MyReceiver extends BroadcastReceiver {
                         new NotificationCompat.Builder(context)
                                 .setSmallIcon(R.drawable.cast_ic_notification_small_icon)
                                 .setContentTitle("Estado del reclamo")
-                                .setContentText("Recibimos su reclamo, está en proceso de solucionar el problema");
+                                .setContentText("Recibimos su reclamo \""+b.getString("Descripcion")+"\", está en proceso de solucionar el problema");
                 mBuilder.setContentIntent(contentIntent);
                 mBuilder.setDefaults(Notification.DEFAULT_SOUND);
                 mBuilder.setAutoCancel(true);
+
+                NotificationCompat.BigTextStyle mGrande =
+                        new NotificationCompat.BigTextStyle(mBuilder);
+                mGrande.setBigContentTitle("Estado del Reclamo");
+                mGrande.bigText("Recibimos su reclamo \""+b.getString("Descripcion")+"\", está en proceso de solucionar el problema");
+
                 NotificationManager mNotificationManager =
                         (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManager.notify(1, mBuilder.build());
+                mNotificationManager.notify(1, mGrande.build());
+
 
                 //Se actualiza el estado del reclamo
                 ReclamoApiRest gestion = new ReclamoApiRest();
@@ -73,13 +81,18 @@ public class MyReceiver extends BroadcastReceiver {
                         new NotificationCompat.Builder(context)
                                 .setSmallIcon(R.drawable.cast_ic_notification_small_icon)
                                 .setContentTitle("Estado del reclamo")
-                                .setContentText("Su reclamo está resuelto");
+                                .setContentText("Su reclamo \""+b.getString("Descripcion")+"\" está resuelto");
                 mBuilder.setContentIntent(contentIntent);
                 mBuilder.setDefaults(Notification.DEFAULT_SOUND);
                 mBuilder.setAutoCancel(true);
+                NotificationCompat.BigTextStyle mGrande =
+                        new NotificationCompat.BigTextStyle(mBuilder);
+                mGrande.setBigContentTitle("Estado del Reclamo");
+                mGrande.bigText("Su reclamo \""+b.getString("Descripcion")+"\" está resuelto");
+
                 NotificationManager mNotificationManager =
                         (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManager.notify(1, mBuilder.build());
+                mNotificationManager.notify(1, mGrande.build());
 
                 //Se actualiza el estado del reclamo
                 ReclamoApiRest gestion = new ReclamoApiRest();
