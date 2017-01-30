@@ -58,9 +58,11 @@ public class AltaReclamo extends AppCompatActivity {
         imageView_ImagenReclamo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                /*Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
-                startActivityForResult(galleryIntent, ClaveIntent);
+                startActivityForResult(galleryIntent, ClaveIntent);*/
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, ClaveIntent);
             }
         });
 
