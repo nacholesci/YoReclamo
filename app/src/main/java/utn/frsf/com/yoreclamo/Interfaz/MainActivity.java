@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
 import utn.frsf.com.yoreclamo.R;
 
 public class MainActivity extends AppCompatActivity {

@@ -29,6 +29,14 @@ public class ReclamoApiRest implements ApiImplementation<Reclamo> {
         new AsynTaskBD().execute(ReclamoDBApiRestMetaData.TABLA_RECLAMO,"PUT",entrada.toJSON(),entrada.getId());
     }
 
+    public Reclamo buscarPorId(Integer id){
+        ArrayList<Reclamo> entrada = listarEnLista();
+        for(Reclamo i: entrada)
+            if(i.getId()==id)
+                return i;
+        return null;
+    }
+
     public Reclamo buscarLatLng(LatLng latLng){
         ArrayList<Reclamo> entrada = listarEnLista();
         for(Reclamo i: entrada)

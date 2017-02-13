@@ -61,6 +61,7 @@ public class Adaptador extends ArrayAdapter<Reclamo> {
         TextView descripcion;
         TextView fecha;
         ImageView imagen;
+        
 
     }
 }

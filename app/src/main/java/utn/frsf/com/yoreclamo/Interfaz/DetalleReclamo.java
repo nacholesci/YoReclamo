@@ -5,9 +5,12 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import utn.frsf.com.yoreclamo.Control.ApiRest.ReclamoApiRest;
+import utn.frsf.com.yoreclamo.Entidad.Reclamo;
 import utn.frsf.com.yoreclamo.R;
 
 public class DetalleReclamo extends AppCompatActivity {
@@ -31,13 +34,15 @@ public class DetalleReclamo extends AppCompatActivity {
         textView_detalle_Email = (TextView) findViewById(R.id.textView_detalle_Email);
         imageView_detalle_ImagenReclamo = (ImageView) findViewById(R.id.imageView_detalle_ImagenReclamo);
 
-        textView_detalle_Descripcion.setText(getIntent().getStringExtra("reclamo_descripcion"));
-        textView_detalle_Estado.setText(getIntent().getStringExtra("reclamo_estado"));
-        textView_detalle_Fecha.setText(getIntent().getStringExtra("reclamo_fecha"));
-        textView_detalle_Nombre.setText(getIntent().getStringExtra("reclamo_nombre"));
-        textView_detalle_Numero.setText(getIntent().getStringExtra("reclamo_numero"));
-        textView_detalle_Email.setText(getIntent().getStringExtra("reclamo_email"));
-        byte[] decodedString = Base64.decode(getIntent().getStringExtra("reclamo_imagen"), Base64.DEFAULT);
+        Reclamo elegido = new ReclamoApiRest().buscarPorId(Integer.parseInt(getIntent().getStringExtra("reclamo_elegido")));
+        textView_detalle_Descripcion.setText(elegido.getDescripcion());
+        textView_detalle_Estado.setText(elegido.getEstado());
+        textView_detalle_Fecha.setText(elegido.getFecha());
+        textView_detalle_Nombre.setText(elegido.getNombre());
+        textView_detalle_Numero.setText(elegido.getTelefono());
+        textView_detalle_Email.setText(elegido.getEmail());
+
+        byte[] decodedString = Base64.decode(elegido.getImagenReclamo(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         imageView_detalle_ImagenReclamo.setImageBitmap(decodedByte);
 
